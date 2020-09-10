@@ -23,14 +23,12 @@ export default class News extends Component{
 
     componentDidMount() {
         const newsId = this.props.match.params.id;
-        console.log(newsId);
         if(newsId){
             this.findNewsById(newsId);
         }
     }
 
     findNewsById = (newsId) => {
-        alert("update all girdi");
         axios.get("http://localhost:8080/news/"+newsId)
             .then(response => {
                 if(response.data != null){
@@ -76,7 +74,6 @@ export default class News extends Component{
     };
 
     updateNews = event => {
-        alert("update girdi");
         event.preventDefault();
 
         const news = {

@@ -22,7 +22,7 @@ export default class Notice extends Component{
     };
 
     componentDidMount() {
-        const noticeId = +this.props.match.params.id;
+        const noticeId = this.props.match.params.id;
         if(noticeId){
             this.findNoticeById(noticeId);
         }
