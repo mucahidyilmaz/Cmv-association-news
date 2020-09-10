@@ -4,15 +4,11 @@ import com.cmvtech.associationnews.dto.NewsDto;
 import com.cmvtech.associationnews.entity.News;
 import com.cmvtech.associationnews.repo.NewsRepo;
 import com.cmvtech.associationnews.service.NewsService;
-import com.cmvtech.associationnews.util.TPage;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,14 +51,6 @@ public class NewsServiceImpl implements NewsService {
 
     }
 
-    @Override
-    public TPage<NewsDto> getAllPageable(Pageable newsPage) {
-        Page<News> data = newsRepo.findAll(newsPage);
-        TPage page = new TPage<NewsDto>();
-        NewsDto[] dtos = modelMapper.map(data.getContent(), NewsDto[].class);
-        page.setStat(data, Arrays.asList(dtos));
-        return page;
-    }
 
 
     @Override

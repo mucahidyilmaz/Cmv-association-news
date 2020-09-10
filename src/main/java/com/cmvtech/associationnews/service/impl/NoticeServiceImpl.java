@@ -1,14 +1,10 @@
 package com.cmvtech.associationnews.service.impl;
 
-import com.cmvtech.associationnews.dto.NewsDto;
 import com.cmvtech.associationnews.dto.NoticeDto;
 import com.cmvtech.associationnews.entity.Notice;
 import com.cmvtech.associationnews.repo.NoticeRepo;
 import com.cmvtech.associationnews.service.NoticeService;
-import com.cmvtech.associationnews.util.TPage;
 import org.modelmapper.ModelMapper;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,15 +47,6 @@ public class NoticeServiceImpl implements NoticeService {
         }
     }
 
-
-    @Override
-    public TPage<NoticeDto> getAllPageable(Pageable noticePage) {
-        Page<Notice> data = noticeRepo.findAll(noticePage);
-        TPage page = new TPage<NoticeDto>();
-        NoticeDto[] ctos = modelMapper.map(data.getContent(), NoticeDto[].class);
-        page.setStat(data, Arrays.asList(ctos));
-        return page;
-    }
 
 
 

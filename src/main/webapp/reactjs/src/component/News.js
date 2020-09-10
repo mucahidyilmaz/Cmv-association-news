@@ -22,21 +22,23 @@ export default class News extends Component{
     };
 
     componentDidMount() {
-        const newsId = +this.props.match.params.id;
+        const newsId = this.props.match.params.id;
+        console.log(newsId);
         if(newsId){
             this.findNewsById(newsId);
         }
     }
 
     findNewsById = (newsId) => {
+        alert("update all girdi");
         axios.get("http://localhost:8080/news/"+newsId)
             .then(response => {
                 if(response.data != null){
                     this.setState({
                         id:response.data.id,
                         topic: response.data.topic,
-                        expDate:response.data.expDate,
                         created:response.data.created,
+                        expDate:response.data.expDate,
                         content:response.data.content
                     });
                 }
@@ -74,6 +76,7 @@ export default class News extends Component{
     };
 
     updateNews = event => {
+        alert("update girdi");
         event.preventDefault();
 
         const news = {

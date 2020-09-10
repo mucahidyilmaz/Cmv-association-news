@@ -83,7 +83,7 @@ export default class NoticeList extends Component{
                                         <td>{notice.content}</td>
                                         <td>
                                             <ButtonGroup>
-                                                <Link to={"NoticeAdd/"+notice.id} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon ={faEdit}/></Link>{'  '}
+                                                <Link to={"NoticeEdit/"+notice.id} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon ={faEdit}/></Link>{'  '}
                                                 <Button size="sm" variant="outline-danger" onClick={this.deleteNotice.bind(this,notice.id)}><FontAwesomeIcon icon ={faTrash}/></Button>
                                             </ButtonGroup>
                                         </td>
